@@ -74,13 +74,18 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     false
     )
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
+	
+})
 function SlowPower (bool: boolean, num: number) {
     if (0 == 0) {
     	
     }
 }
+let power2: Sprite = null
+let obstacle: Sprite = null
 let mySprite: Sprite = null
-let acceleration = 10
+let acceleration = 2
 scroller.setBackgroundScrollOffset(0, 0)
 scroller.setLayerImage(scroller.BackgroundLayer.Layer1, img`
     8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
@@ -588,36 +593,38 @@ mySprite = sprites.create(img`
     . . . . . . f f f f f f . . . . 
     . . . . . . . f f f . . . . . . 
     `, SpriteKind.Player)
-let obstacle_1 = sprites.create(img`
-    ..cccc.........
-    .cdddbc........
-    cbdddbccccccc..
-    cbdddbcbdddddc.
-    cbdddbcdddddbbc
-    cbdddbcbbbbbbbc
-    cbdddbccccccbbc
-    cbdddbcddddbccc
-    cbdddbcdddddbc.
-    cbdddbcdddddbc.
-    cbdddbcdddddbc.
-    cbdddbcdddddbc.
-    cbdddbcdddddbc.
-    cbdddbcdddddbc.
-    cbdddbcdddddbc.
-    cbddbbcdddddbc.
-    cbbbbbcccccccc.
-    cbbbbbcbdddddc.
-    cbbbbbcdddddbbc
-    cbbbbbcbbbbbbbc
-    cbbbbbcbbbbbbbc
-    cbbbbbcbbbbbbbc
-    .cccccccccccccc
-    .cbbc.....cbbc.
-    `, SpriteKind.Player)
-obstacle_1.setPosition(130, 101)
 controller.moveSprite(mySprite)
+let list = [1, 2, 3]
+mySprite.setStayInScreen(true)
+game.onUpdateInterval(acceleration / 0.003, function () {
+    obstacle = list._pickRandom()
+    obstacle.setPosition(160, randint(120, 75))
+    obstacle.setVelocity(acceleration * -0.25, 0)
+})
 game.onUpdateInterval(2000, function () {
     acceleration = acceleration + acceleration
+})
+game.onUpdateInterval(acceleration * 100000, function () {
+    power2 = sprites.create(img`
+        . . . . . . . 6 . . . . . . . . 
+        . . . . . . 8 6 6 . . . 6 8 . . 
+        . . . e e e 8 8 6 6 . 6 7 8 . . 
+        . . e 2 2 2 2 e 8 6 6 7 6 . . . 
+        . e 2 2 4 4 2 7 7 7 7 7 8 6 . . 
+        . e 2 4 4 2 6 7 7 7 6 7 6 8 8 . 
+        e 2 4 5 2 2 6 7 7 6 2 7 7 6 . . 
+        e 2 4 4 2 2 6 7 6 2 2 6 7 7 6 . 
+        e 2 4 2 2 2 6 6 2 2 2 e 7 7 6 . 
+        e 2 4 2 2 4 2 2 2 4 2 2 e 7 6 . 
+        e 2 4 2 2 2 2 2 2 2 2 2 e c 6 . 
+        e 2 2 2 2 2 2 2 4 e 2 e e c . . 
+        e e 2 e 2 2 4 2 2 e e e c . . . 
+        e e e e 2 e 2 2 e e e c . . . . 
+        e e e 2 e e c e c c c . . . . . 
+        . c c c c c c c . . . . . . . . 
+        `, SpriteKind.Food)
+    power2.setPosition(160, randint(120, 75))
+    power2.setVelocity(acceleration * -1, 0)
 })
 forever(function () {
     scroller.scrollBackgroundWithSpeed(acceleration / 4, 0, scroller.BackgroundLayer.Layer1)
