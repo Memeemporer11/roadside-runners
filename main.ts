@@ -819,10 +819,16 @@ function trail (bool: boolean, num: number) {
             dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
             dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
             `)
-        for (let index = 0; index < 4; index++) {
+        for (let index = 0; index < 10; index++) {
             snow = sprites.create(assets.image`snow`, SpriteKind.weather)
+            animation.runImageAnimation(
+            snow,
+            assets.animation`snowy`,
+            200,
+            true
+            )
             snow.setPosition(randint(0, 160), 0)
-            snow.setVelocity(randint(15, 45), randint(15, 100))
+            snow.setVelocity(randint(-45, 45), randint(15, 100))
         }
     }
 }
