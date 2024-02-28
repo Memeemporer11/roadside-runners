@@ -1,5 +1,5 @@
 {
-    "name": "roadside runners",
+    "name": "roadside runners og ig",
     "description": "",
     "dependencies": {
         "device": "*",
@@ -25,5 +25,5 @@
     "supportedTargets": [
         "arcade"
     ],
-    "preferredEditor": "tsprj"
+    "preferredEditor": "blocksprj"
 }
