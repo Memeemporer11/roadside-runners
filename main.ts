@@ -168,7 +168,7 @@ sprites.onOverlap(SpriteKind.breaker, SpriteKind.Projectile, function (sprite, o
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
-    power2,
+    mySprite,
     [img`
         . . . . . . f f f f f f . . . . 
         . . . . f f e e e e f 2 f . . . 
@@ -838,8 +838,8 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
 })
 let obstacle: Sprite = null
 let number = ""
-let snow: Sprite = null
 let power2: Sprite = null
+let snow: Sprite = null
 let mySprite: Sprite = null
 let acceleration = 0
 acceleration = 20
