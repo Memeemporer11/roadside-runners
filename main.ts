@@ -576,7 +576,7 @@ function scenery (num: number) {
             dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
             dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
             `)
-        for (let index = 0; index < 10; index++) {
+        for (let index = 0; index < 5; index++) {
             snow = sprites.create(assets.image`snow`, SpriteKind.weather)
             animation.runImageAnimation(
             snow,
@@ -1670,8 +1670,8 @@ game.onUpdateInterval(1, function () {
 })
 // https://github.com/microsoft/arcade-background-scroll
 forever(function () {
-    scroller.scrollBackgroundWithSpeed(acceleration / -2, 0, scroller.BackgroundLayer.Layer1)
-    scroller.scrollBackgroundWithSpeed(acceleration / -3, 0, scroller.BackgroundLayer.Layer2)
+    scroller.scrollBackgroundWithSpeed(acceleration / -5, 0, scroller.BackgroundLayer.Layer1)
+    scroller.scrollBackgroundWithSpeed(acceleration / -2, 0, scroller.BackgroundLayer.Layer2)
 })
 game.onUpdateInterval(500, function () {
     scenery(acceleration)
