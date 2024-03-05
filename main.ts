@@ -81,6 +81,7 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
 sprites.onOverlap(SpriteKind.breaker, SpriteKind.weather, function (sprite, otherSprite) {
     sprites.destroy(otherSprite)
 })
+// https://github.com/microsoft/arcade-background-scroll
 function scenery (num: number) {
     if (num >= 150) {
         scroller.setLayerImage(scroller.BackgroundLayer.Layer1, img`
@@ -836,6 +837,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     game.splash("you tripped over the guarding rail and fell to your death")
     game.gameOver(false)
 })
+// https://github.com/microsoft/arcade-background-scroll
 let obstacle: Sprite = null
 let number = ""
 let power2: Sprite = null
@@ -1666,6 +1668,7 @@ game.onUpdateInterval(2000, function () {
 game.onUpdateInterval(1, function () {
     info.changeScoreBy(acceleration / 40)
 })
+// https://github.com/microsoft/arcade-background-scroll
 forever(function () {
     scroller.scrollBackgroundWithSpeed(acceleration / -2, 0, scroller.BackgroundLayer.Layer1)
     scroller.scrollBackgroundWithSpeed(acceleration / -3, 0, scroller.BackgroundLayer.Layer2)
